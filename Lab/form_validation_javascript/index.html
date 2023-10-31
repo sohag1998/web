@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Details</title>
+</head>
+<style>
+
+    body{
+        margin: 0;
+        background: #151644;
+        font-family: monospace;
+    }
+    .container{
+        width: 400px;
+        margin: auto;
+    }
+    .content{
+        margin-top: 100px;
+        padding: 30px 20px;
+        background: #fff;
+        text-align: center;
+        border: 2px solid #fff;
+        border-radius: 20px;
+    }
+    .content h3{
+        margin: 0;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    .container table{
+        table-layout: auto;
+        width: 100%;
+    }
+    .right{
+        text-align: left;
+    }
+    form td input{
+        margin: 5px 0;
+        width: 98%;
+        padding: 5px 2px;
+        border: 2px solid #333;
+        border-radius: 5px;
+    }
+    form td input:focus{
+        border: 2px solid #151644;
+        outline: none;
+    }
+    .button{
+        margin-top: 20px;
+        padding:8px 30px;
+        background: #151644;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        border: 1px solid #151644;
+        border-radius: 5px;
+        display: block;
+
+    }
+</style>
+<script>
+    function validate_uname(uname){
+        const letter = /^[a-zA-Z]+$/;
+        if(uname.match(letter)){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    function validate_email(email){
+        const email_validator = /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
+        if(email.match(email_validator)){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    function validate_phone(phone){
+        const phone_validator = /^[0-9]+$/;
+        if(phone.match(phone_validator)){
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
+    function validate(){
+        const uname = document.getElementById("name");
+        const email = document.getElementById("email");
+        const phone = document.getElementById("phone");
+        const password = document.getElementById("password");
+        if(uname.value.length < 6 || validate_uname(uname.value)){
+            uname.style.borderColor = "red";
+            return false;
+        }
+        if(validate_email(email.value)){
+            email.style.borderColor = "red";
+            return false;
+        }
+        if(validate_phone(phone.value) || phone.value.length != 10){
+            phone.style.borderColor = "red";
+            return false;
+        }
+        if(password.value.length < 6){
+            password.style.borderColor = "red";
+            return false;
+        }
+        else{
+            alert("Successfully validate")
+            return true;
+        }
+
+    }
+</script>
+<body>
+    <div class="container">
+        <div class="content">
+        <h3>Personal details</h3>
+            <form onsubmit="return validate()" action="message.html" name="myform">
+                <table>
+                    <tr>
+                        <td class="right"><label for="name">Enter your Name: </label></td>
+                        <td>
+                            <input id="name" type="text" placeholder="Name at least 6 charecter">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="right"><label for="email">Email: </label></td>
+                        <td><input id="email" type="text" placeholder="Enter your email"></td>
+                    </tr>
+                    <tr>
+                        <td class="right"><label for="phone">Phone Number: </label></td>
+                        <td><input id="phone" type="text" placeholder="Phone number must be 10 digits"></td>
+                    </tr>
+                    <tr>
+                        <td class="right"><label for="password">Password: </label></td>
+                        <td><input id="password" type="password" placeholder="Password at least 6 charecter"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button class="button" type="submit">Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

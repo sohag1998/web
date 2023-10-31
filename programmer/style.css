@@ -1,0 +1,60 @@
+body, div, h1, h2,p{
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+}
+
+.container{
+    width: 70%;
+    margin: auto;
+}
+
+.table{
+    width: 100%;
+    padding-top: 80px;
+}
+.table h2{
+    margin-bottom: 10px;
+}
+.table table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    
+}
+
+.table table tr:nth-child(even){
+    background: #8289ec;
+}
+.table table tr:nth-child(odd){
+    background: #9aeece;
+}
+.table table tr th, .table table tr td{
+    padding: 5px 0;
+}
+a{
+    padding: 5px 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+}
+.add_btn{
+    background: #02313f;
+    margin-top: 14px;
+}
+.edit_btn{
+    background: #026988;
+}
+.delete_btn{
+    background: #830404;
+}
+
+.form{
+    width: 100%;
+    margin-top: 100px;
+}
+
+.table table tr td img{
+    width: 30px;
+    height: 30px;
+}
