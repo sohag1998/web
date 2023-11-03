@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Details</title>
+</head>
+<style>
+
+    body{
+        margin: 0;
+        background: #d3d3d4;
+        font-family: monospace;
+    }
+    p{
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        width: 400px;
+        margin: auto;
+    }
+    .content{
+        width: 90%;
+        margin-top: 100px;
+        padding: 30px 5%;
+        background: #510961;
+        text-align: left;
+        border: 2px solid #510961;
+        border-radius: 20px;
+    }
+    .content h3{
+        margin: 0;
+        padding: 0;
+        margin-bottom: 30px;
+        font-size: 20px;
+        color: #fff;
+    }
+    form input:not([type="submit"]){
+        display: block;
+        width: 96%;
+        margin: 0;
+        margin-top: 15px;
+        padding: 8px 2%;
+        border: 1px solid transparent;
+        border-radius: 5px;
+    }
+    form input:not([type="submit"]):focus{
+        border: 1px solid #08ac31;
+        outline: none;
+    }
+    .error{
+        margin-left: 5px;
+        color: red;
+        font-size: 16px;
+        display: none;
+    }
+    form input[type="submit"]{
+        margin-top: 20px;
+        padding:8px 30px;
+        background: #d3d3d4;
+        color: #510961;
+        font-size: 15px;
+        font-weight: 700;
+        border: 2px solid #d3d3d4;
+        border-radius: 5px;
+        display: block;
+        cursor: pointer;
+    }
+</style>
+<script>
+    function validForm(){
+        var name = document.myform.name;
+        var email = document.myform.email;
+        var phone = document.myform.phone;
+        var password = document.myform.password;
+
+        if(name.value=="" || !name.value.match(/^[a-zA-Z]+$/)){
+            name.nextElementSibling.style.display = "block";
+            name.style.border = "1px solid red";
+            return false;
+        }
+        else{
+            name.nextElementSibling.style.display = "none";
+            name.style.border = "1px solid green";
+        }
+
+        if(email.value == "" || !email.value.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+            email.nextElementSibling.style.display = "block";
+            email.style.border = "1px solid red";
+            return false;
+        }else{
+            email.nextElementSibling.style.display = "none";
+            email.style.border = "1px solid green";
+        }
+        if(phone.value == "" || phone.value.length !=10 || !phone.value.match(/^[0-9]+$/)){
+            phone.nextElementSibling.style.display = "block";
+            phone.style.border = "1px solid red";
+            return false;
+        }else{
+            phone.nextElementSibling.style.display = "none";
+            phone.style.border = "1px solid green";
+        }
+        if(password.value == "" || password.value.length < 6){
+            password.nextElementSibling.style.display = "block";
+            password.style.border = "1px solid red";
+            return false;
+        }else{
+            password.nextElementSibling.style.display = "none";
+            password.style.border = "1px solid green";  
+        }
+    }
+</script>
+<body>
+    <div class="container">
+        <div class="content">
+        <h3>Personal details</h3>
+            <form onsubmit="return validForm()" action="message.html" name="myform">
+                <input type="text" name="name" id="name" placeholder="Name*">
+                <p class="error">Enter a valid name!</p>
+                <input type="text" name="email" id="email" placeholder="Email*">
+                <p class="error">Enter valid email!</p>
+                <input type="tel" name="phone" id="phone" placeholder="Phone*">
+                <p class="error">Phone number must be 10 digits!</p>
+                <input type="text" name="password" id="password" placeholder="Password*">
+                <p class="error">Enter valid password!</p>
+                <input type="submit" value="Submit", name="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
